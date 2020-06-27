@@ -3,7 +3,7 @@
 ## Objectives
 1. Understanding Datasets
 
-2. Understanding wfdb module
+2. Understanding wfdb , biosppy module
 
 3. Using image based methods for ECG
 
@@ -34,6 +34,8 @@ symbols for the annotations - https://archive.physionet.org/physiobank/annotatio
 ## Important modules to learn
 1. wfdb
 
+2. biosppy
+! [Biosppy module output for ECG](Images/22.png)
 
 ## Blogs to get started
 
@@ -45,5 +47,26 @@ https://medium.com/@smartsplash/installing-wfdb-package-in-terminal-9a39b9b7b65a
 
 
 ## Jupyter notebooks 
-1. 
+2.1 ECG_2D-CNN_FASTAI_basic_ipynb.ipynb
+
+! [Results from 2d-CNN](Images/21.png)
+
+2.2 Keras_DenseNN,_1D_CNN,_LSTM.ipynb
+
 uses simple NN, 1D-CNNs , LSTM        from - https://github.com/andrewwlong/deep_arrhythmias
+
+
+2.3 wfdb_module_basic.ipynb
+
+! [Drawing an ECG signal](Images/10.png)
+
+
+2.4 wfdb_module_data_processing.ipynb
+
+! [Plotting Local peaks](Images/11.png)
+
+! [Detecting QRS peaks](Images/12.png)
+
+
+
+

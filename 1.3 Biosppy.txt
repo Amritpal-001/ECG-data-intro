@@ -1,0 +1,15 @@
+# BioSPPY
+
+BioSPPy is a toolbox for biosignal processing written in Python. 
+The toolbox bundles together various signal processing and pattern recognition methods geared torwards the analysis of biosignals.
+
+https://biosppy.readthedocs.io/en/stable/
+
+Highlights:
+
+    Support for various biosignals: BVP, ECG, EDA, EEG, EMG, Respiration
+    Signal analysis primitives: filtering, frequency analysis
+    Clustering
+    Biometrics
+
+

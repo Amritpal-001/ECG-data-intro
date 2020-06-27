@@ -19,4 +19,10 @@ The exact API of all accessible functions and classes, as given by the docstring
         Annotation Evaluators
 
 
+# jupyter notebooks 
+
+'2.3 wfdb_module_basic.ipynb'
+
+'2.4 wfdb_module_data_processing.ipynb'
+
 
