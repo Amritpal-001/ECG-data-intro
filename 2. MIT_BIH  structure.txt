@@ -1,0 +1,91 @@
+# MIT-bih-arrhythmia-database-1.0.0   - Published: Feb. 24, 2005
+
+https://physionet.org/content/mitdb/1.0.0/
+
+https://www.physionet.org/physiobank/database/html/mitdbdir/records.htm
+
+symbols for the annotations - https://archive.physionet.org/physiobank/annotations.shtml
+
+Beat annotations:
+Code		Description
+N		Normal beat (displayed as "·" by the PhysioBank ATM, LightWAVE, pschart, and psfd)
+L		Left bundle branch block beat
+R		Right bundle branch block beat
+B		Bundle branch block beat (unspecified)
+A		Atrial premature beat
+a		Aberrated atrial premature beat
+J		Nodal (junctional) premature beat
+S		Supraventricular premature or ectopic beat (atrial or nodal)
+V		Premature ventricular contraction
+r		R-on-T premature ventricular contraction
+F		Fusion of ventricular and normal beat
+e		Atrial escape beat
+j		Nodal (junctional) escape beat
+n		Supraventricular escape beat (atrial or nodal)
+E		Ventricular escape beat
+/		Paced beat
+f		Fusion of paced and normal beat
+Q		Unclassifiable beat
+?		Beat not classified during learning
+
+Non-beat annotations:
+Code		Description
+[		Start of ventricular flutter/fibrillation
+!		Ventricular flutter wave
+]		End of ventricular flutter/fibrillation
+x		Non-conducted P-wave (blocked APC)
+(		Waveform onset
+)		Waveform end
+p		Peak of P-wave
+t		Peak of T-wave
+u		Peak of U-wave
+`		PQ junction
+'		J-point
+^		(Non-captured) pacemaker artifact
+|		Isolated QRS-like artifact [1]
+~		Change in signal quality [1]
++		Rhythm change [2]
+s		ST segment change [2]
+T		T-wave change [2]
+*		Systole
+D		Diastole
+=		Measurement annotation [2]
+"		Comment annotation [2]
+@		Link to external data [3]
+
+Each instance of an annotation may have up to six attributes:
+
+    time: the time within the recording (recorded in the annotation file as the sample number of the sample to which the annotation "points")
+    anntyp [sic]: a numeric annotation code (see ecgcodes.h for definitions)
+    subtyp [sic], chan, num: three small integers (between -128 to 127) that specify context-dependent attributes (see the documentation for each database for details)
+    aux: a free text string 
+
+rdann presents these attributes in left-to-right order on each output line, although aux is omitted if (as is most often true) it is empty.
+
+Annotations are viewed and selected using mnemonic codes rather than the numeric anntyp codes used within the annotation files. Annotations can be read by C, C++, and Fortran applications using getann, and they can be written using putann, functions defined within the WFDB library. Matlab and Octave programs can read and write annotations using these m-files. Alternatively, annotations can be read by scripting language applications using rdann, and they can be written using wrann, programs belonging to the WFDB Software Package. Details on the format of annotation files are available here.
+
+Footnotes:
+
+    In artifact and signal quality change annotations, each non-zero bit from the four least significant bits in the subtyp field of the annotation indicates that the corresponding signal contains noise (the least significant bit corresponds to signal 0). The four high bits, if non-zero, indicate that the corresponding signals are unreadable (because of very high noise amplitude, very low signal amplitude, loss of signal, or some combination of these). These annotations, where they exist, reflect the expert annotator's subjective judgements only. rdann and the PhysioBank ATM present the subtyp field in the fourth column of output, to the right of the annotation code. When displaying signal quality change annotations, the ATM, pschart, psfd, and WAVE do not show the annotation code (~) itself; rather, they display a string with one character (c for clean, n for noisy, or u for unreadable) for each signal (beginning with signal 0).
+    In rhythm, ST segment, and T-wave change annotations, and in measurement and comment annotations, the aux field contains an ASCII string (with prefixed byte count) describing the rhythm, ST segment, T-wave change, measurement, or the nature of the comment. By convention, the character that follows the byte count in the aux field of a + annotation is "(". The most commonly used rhythm annotation strings are:
+    String		Description
+    (AB		Atrial bigeminy
+    (AFIB		Atrial fibrillation
+    (AFL		Atrial flutter
+    (B		Ventricular bigeminy
+    (BII		2° heart block
+    (IVR		Idioventricular rhythm
+    (N		Normal sinus rhythm
+    (NOD		Nodal (A-V junctional) rhythm
+    (P		Paced rhythm
+    (PREX		Pre-excitation (WPW)
+    (SBR		Sinus bradycardia
+    (SVTA		Supraventricular tachyarrhythmia
+    (T		Ventricular trigeminy
+    (VFL		Ventricular flutter
+    (VT		Ventricular tachycardia
+    In a few cases, other strings have been used; see the documentation for the associated database for further information in such cases. rdann and the PhysioBank ATM's "Show annotations as text" tool present the aux string at the end of the line (following the sixth column of output) for any annotation that has a non-empty aux field. Programs such as the ATM's "Plot waveforms" tool, LightWAVE, pschart, psfd, and WAVE display the aux string in place of the annotation code; by convention, rhythm labels appear below beat labels, and other aux strings appear above beat labels. When waveforms are shown at condensed scales such that aux strings might overlap, some of these programs automatically or optionally produce abbreviated versions of the aux strings in order to keep the display readable; refer to the documentation for each program for further details.
+    The aux field of a link annotation contains a URL (a uniform resource locator, in the form http://machine.name/some/data) suitable for passing to a web browser. Link annotations may be used to associate extended text, images, or other data with an annotation file. If the aux field contains any whitespace, text following the first whitespace is taken as descriptive text to be displayed by a WFDB browser such as WAVE. If possible, link text is shown underlined and in blue. 
+
+
+

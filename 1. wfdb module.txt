@@ -1,0 +1,22 @@
+## waveform-database (WFDB) package(https://wfdb.readthedocs.io/en/latest/wfdb.html)
+
+A library of tools for reading, writing, and processing WFDB signals and annotations.
+
+The development repository is hosted at: https://github.com/MIT-LCP/wfdb-python
+
+The exact API of all accessible functions and classes, as given by the docstrings, grouped by subpackage:
+
+    io
+        WFDB Records
+        WFDB Anotations
+        Downloading
+    plot
+    processing
+        Basic Utility
+        Heart Rate
+        Peaks
+        QRS Detectors
+        Annotation Evaluators
+
+
+
